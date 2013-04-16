@@ -1,0 +1,10 @@
+# ignore IDE settings
+.c9revisions
+.idea
+.settings
+
+# ignore vendors
+node_modules
+
+# ignore generated files
+npm-debug.log

@@ -1,0 +1,30 @@
+{
+  "name": "symfio-contrib-nodemailer"
+, "version": "0.1.0"
+, "description": "Email sender plugin."
+, "keywords": ["symfio-plugin", "symfio-contrib-nodemailer"]
+, "homepage": "http://symf.io/plugins/symfio-contrib-nodemailer"
+, "author": {
+    "name": "Andrey Linko"
+  , "email": "su2ny@mail.ru"
+  }
+, "main": "lib/nodemailer"
+, "scripts": {
+    "test": "grunt simplemocha"
+  }
+, "dependencies": {
+    "nodemailer": "~0.4"
+  }
+, "devDependencies": {
+    "symfio": "~1.0"
+  , "symfio-suite": "~1.0"
+  , "grunt": "~0.4"
+  , "grunt-simple-mocha": "~0.3"
+  , "grunt-coffeelint": "~0.0"
+  }
+, "engines": {
+    "node": "~0.8"
+  , "npm": "~1.2"
+  , "coffee-script": "~1.6"
+  }
+}
