@@ -1,6 +1,6 @@
 {
   "name": "symfio-contrib-nodemailer"
-, "version": "0.2.0"
+, "version": "0.2.1"
 , "description": "Email sender plugin."
 , "keywords": ["symfio-plugin", "symfio-contrib-nodemailer"]
 , "homepage": "http://symf.io/plugins/symfio-contrib-nodemailer"
