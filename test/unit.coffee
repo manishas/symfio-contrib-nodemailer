@@ -12,4 +12,5 @@ describe "contrib-nodemailer plugin", ->
 
     transport = @container.get "mailer transport"
 
+    @expect(transport.transportType).to.be.equal "SENDMAIL"
     @expect(transport.sendMail).to.be.a "function"

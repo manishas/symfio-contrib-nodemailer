@@ -8,7 +8,7 @@ module.exports = (container, callback) ->
 
   logger.info "loading plugin", "contrib-nodemailer"
 
-  transport = nodemailer.createTransport smtpTransport. smtpTransportOptions
+  transport = nodemailer.createTransport smtpTransport, smtpTransportOptions
 
   container.set "mailer transport", transport
 
