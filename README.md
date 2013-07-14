@@ -2,6 +2,8 @@
 
 > Email sender plugin.
 
+[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nodemailer.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nodemailer) [![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nodemailer.png)](https://gemnasium.com/symfio/symfio-contrib-nodemailer)
+
 ## Usage
 
 ```coffee
