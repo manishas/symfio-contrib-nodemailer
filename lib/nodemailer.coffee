@@ -1,15 +1,15 @@
-nodemailer = require "nodemailer"
-      
+module.exports = (container) ->
+  container.require require
+  container.require "nodemailer"
+  container.require "nodefn", "when/node/function"
 
-module.exports = (container, callback) ->
-  smtpTransportOptions = container.get "smtp transport options"
-  smtpTransport = container.get "smtp transport", "sendmail"
-  logger = container.get "logger"
+  container.unless "mailTransportType", "sendmail"
+  container.unless "mailTransportOptions", {}
 
-  logger.info "loading plugin", "contrib-nodemailer"
+  container.set "mailTransport",
+    (nodemailer, mailTransportType, mailTransportOptions) ->
+      nodemailer.createTransport mailTransportType, mailTransportOptions
 
-  transport = nodemailer.createTransport smtpTransport, smtpTransportOptions
-
-  container.set "mailer transport", transport
-
-  callback()
+  container.set "sendMail", (mailTransport, nodefn) ->
+    ->
+      nodefn.apply mailTransport.sendMail.bind(mailTransport), arguments

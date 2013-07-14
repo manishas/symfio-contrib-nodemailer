@@ -9,31 +9,47 @@ symfio = require "symfio"
 
 container = symfio "example", __dirname
 
-container.set "smtp transport", "smtp"
-container.set "smtp transport options",
+container.set "mailTransportType", "smtp"
+
+container.set "mailTransportOptions",
   service: "gmail"
   auth:
     user: "example@gmail.com"
     pass: "password"
 
-loader = container.get "loader"
+container.inject require "symfio-contrib-nodemailer"
 
-loader.use require "symfio-contrib-nodemailer"
-
-loader.use (container, callback) ->
-  transport = container.get "mailer transport"
-
-  transport.sendMail
+container.inject (sendMail, container) ->
+  sendMail
     to: "test@example.com"
     subject: "Subject"
     text: "Body"
-  , (err) ->
-    callback()
-
-loader.load()
+  .then ->
+    console.log "Mail sent"
+  .then null, (err) ->
+    console.log err
+  .then ->
+    container.get "mailTransport"
+  .then (mailTransport) ->
+    mailTransport.close()
 ```
 
-## Can be configured
+## Configuration
 
-* __smtp transport__ - SMTP transport. Default is `sendmail`.
-* __smtp transport options__
+### `mailTransportType`
+
+Default is `sendmail`.
+
+### `mailTransportOptions`
+
+Nodemailer transport options.
+
+## Services
+
+### `mailTransport`
+
+Configured nodemailer transport.
+
+### `sendMail`
+
+Wrapped `mailTransport.sendMail`. Returns promise.

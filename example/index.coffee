@@ -1,18 +1,46 @@
+callbacks = require "when/callbacks"
+sequence = require "when/sequence"
+readline = require "readline"
 symfio = require "symfio"
 
-module.exports = container = symfio "example", __dirname
 
-loader = container.get "loader"
-loader.use require "../lib/nodemailer"
+rl = readline.createInterface
+  input: process.stdin
+  output: process.stdout
 
-loader.use (container, callback) ->
-  transport = container.get "mailer transport"
+question = (message) -> -> callbacks.call rl.question.bind(rl), message
 
-  transport.sendMail
-    to: "test@example.com"
-    subject: "Subject"
-    text: "Body"
-  , (err) ->
-    callback()
+sequence([
+  question "Gmail username: "
+  question "Gmail password: "
+  question "To: "
+  question "Subject: "
+  question "Text: "
+]).spread (username, password, to, subject, text) ->
+  container = symfio "example", __dirname
+  container.set "mailTransportType", "smtp"
+  container.set "mailTransportOptions",
+    service: "gmail"
+    auth:
+      user: username
+      pass: password
 
-loader.load() if require.main is module
+  container.injectAll [
+    require ".."
+
+    (sendMail) ->
+      sendMail
+        from: username
+        to: to
+        subject: subject
+        text: text
+      .then ->
+        console.log "Mail sent"
+      .then null, (err) ->
+        console.log err
+      .then ->
+        rl.close()
+        container.get "mailTransport"
+      .then (mailTransport) ->
+        mailTransport.close()
+  ]

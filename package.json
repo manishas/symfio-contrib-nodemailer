@@ -10,21 +10,23 @@
   }
 , "main": "lib/nodemailer"
 , "scripts": {
-    "test": "grunt simplemocha"
+    "test": "npm install && grunt"
   }
 , "dependencies": {
-    "nodemailer": "~0.4"
+    "nodemailer": "~0.5"
   }
 , "devDependencies": {
-    "symfio": "~1.0"
-  , "symfio-suite": "~1.0"
+    "when": "~2.2"
+  , "symfio": "~2.0"
+  , "symfio-suite": "~2.0"
   , "grunt": "~0.4"
   , "grunt-simple-mocha": "~0.4"
   , "grunt-coffeelint": "~0.0"
   }
 , "engines": {
-    "node": "~0.8"
-  , "npm": "~1.2"
+    "node": ">=0.8"
+  , "npm": ">=1.2"
   , "coffee-script": "~1.6"
+  , "grunt-cli": "~0.1"
   }
 }
