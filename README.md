@@ -2,7 +2,10 @@
 
 > Email sender plugin.
 
-[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nodemailer.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nodemailer) [![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nodemailer.png)](https://gemnasium.com/symfio/symfio-contrib-nodemailer)
+[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nodemailer.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nodemailer)
+[![Coverage Status](https://coveralls.io/repos/symfio/symfio-contrib-nodemailer/badge.png?branch=master)](https://coveralls.io/r/symfio/symfio-contrib-nodemailer?branch=master)
+[![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nodemailer.png)](https://gemnasium.com/symfio/symfio-contrib-nodemailer)
+[![NPM version](https://badge.fury.io/js/symfio-contrib-nodemailer.png)](http://badge.fury.io/js/symfio-contrib-nodemailer)
 
 ## Usage
 
