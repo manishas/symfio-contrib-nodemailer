@@ -9,3 +9,6 @@ install:
   - npm install -g coveralls
 script: grunt
 after_script: grunt coveralls | coveralls
+notifications:
+  email:
+    - manishas@qhode.com
